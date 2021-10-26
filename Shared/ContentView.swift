@@ -9,8 +9,20 @@ import SwiftUI
 
 struct ContentView: View {
     var body: some View {
-        Text("Hello, world!")
+        VStack {
+            Text("Document Title")
+            TextEditingView()
+        }
+    }
+}
+
+struct TextEditingView: View {
+    @State private var fullText: String = "This is some editable text..."
+
+    var body: some View {
+        TextEditor(text: $fullText)
             .padding()
+            .foregroundColor(.red)
     }
 }
 
