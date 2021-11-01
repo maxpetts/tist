@@ -16,7 +16,10 @@ struct ContentView: View {
             HStack {
                 TextField("Enter your next task!", text: $input)
                 Button(action: {
-                    view_model.addTask(input)
+                    if (input != "") {
+                        view_model.addTask(input)
+                        input = ""
+                    }
                 }) {
                     Image(systemName: "plus")
                 }
@@ -34,7 +37,7 @@ struct TodoTaskHorizView: View {
     let task: Todo.TodoTask
     
     var body: some View {
-        Text(task.title)
+        Text(task.title).padding()
     }
 }
 
