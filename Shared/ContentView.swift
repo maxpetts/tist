@@ -8,26 +8,35 @@
 import SwiftUI
 
 struct ContentView: View {
+    @State private var input: String = ""
+    var view_model: TodoList
+    
     var body: some View {
         VStack {
-            Text("Document Title")
-            TextEditingView()
-        }
+            HStack {
+                TextField("Input", text: $input)
+                Button(action: {
+                    print("pressed")
+                }) {
+                    Image(systemName: "plus")
+                }
+            }
+            TodoListView()
+        } .padding()
     }
 }
 
-struct TextEditingView: View {
-    @State private var fullText: String = "This is some editable text..."
-
+struct TodoListView: View {
     var body: some View {
-        TextEditor(text: $fullText)
-            .padding()
-            .foregroundColor(.red)
+        List {
+            
+        }
     }
 }
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView()
+        let tist = TodoList()
+        ContentView(view_model: tist)
     }
 }
