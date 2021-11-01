@@ -21,16 +21,19 @@ struct ContentView: View {
                     Image(systemName: "plus")
                 }
             }
-            TodoListView()
-        } .padding()
+            List {
+                ForEach(view_model.todo_list) { task in
+                    TodoTaskHorizView(task: task)
+                }
+            }        } .padding()
     }
 }
 
-struct TodoListView: View {
+struct TodoTaskHorizView: View {
+    let task: TodoTask
+    
     var body: some View {
-        List {
-            
-        }
+        Text(task.title)
     }
 }
 

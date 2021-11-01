@@ -7,13 +7,15 @@
 
 import Foundation
 
-/// - Tag: ViewModel
+// - Tag: ViewModel
 class TodoList {
-    private let todo_list: [TodoTask] = []
+    var todo_list: Array<TodoTask> = Array<TodoTask>()
     
-//    mutating func addTask(_ task: TodoTask) {
-//        tasks.append(task)
-//    }
+    // MARK: - Intents
+    
+    func addTask(_ task: TodoTask) {
+        todo_list.append(task)
+    }
 //
 //    mutating func addTask(_ taskTitle: String) {
 //        tasks.append(TodoTask(title: taskTitle))

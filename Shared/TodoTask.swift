@@ -8,7 +8,7 @@
 import Foundation
 
 /// - Tag: DataModel
-struct TodoTask {
+struct TodoTask: Identifiable {
     let id = UUID()
     var complete: Bool = false
     let title: String
