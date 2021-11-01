@@ -8,18 +8,19 @@
 import Foundation
 
 // - Tag: ViewModel
-class TodoList {
-    var todo_list: Array<TodoTask> = Array<TodoTask>()
+class TodoList: ObservableObject {
+    @Published private(set) var model: Todo = Todo()
+    
+    var list: Array<Todo.TodoTask> {
+        model.todo_list
+    }
     
     // MARK: - Intents
     
-    func addTask(_ task: TodoTask) {
-        todo_list.append(task)
-    }
 //
-//    mutating func addTask(_ taskTitle: String) {
-//        tasks.append(TodoTask(title: taskTitle))
-//    }
+    func addTask(_ taskTitle: String) {
+        model.createTask(title: taskTitle)
+    }
 //
 //    mutating func removeTask(_ task: TodoTask) {
 //        print("not implem")

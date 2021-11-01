@@ -9,28 +9,29 @@ import SwiftUI
 
 struct ContentView: View {
     @State private var input: String = ""
-    var view_model: TodoList
+    @ObservedObject var view_model: TodoList
     
     var body: some View {
         VStack {
             HStack {
-                TextField("Input", text: $input)
+                TextField("Enter your next task!", text: $input)
                 Button(action: {
-                    print("pressed")
+                    view_model.addTask(input)
                 }) {
                     Image(systemName: "plus")
                 }
             }
             List {
-                ForEach(view_model.todo_list) { task in
+                ForEach(view_model.list) { task in
                     TodoTaskHorizView(task: task)
                 }
-            }        } .padding()
+            }
+        }.padding()
     }
 }
 
 struct TodoTaskHorizView: View {
-    let task: TodoTask
+    let task: Todo.TodoTask
     
     var body: some View {
         Text(task.title)
