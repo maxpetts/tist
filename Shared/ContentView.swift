@@ -11,6 +11,8 @@ struct ContentView: View {
     @State private var input: String = ""
     @ObservedObject var view_model: TodoList
     
+    // TODO: Add empty task_list view
+    
     var body: some View {
         VStack {
             HStack {
@@ -22,22 +24,38 @@ struct ContentView: View {
                     }
                 }) {
                     Image(systemName: "plus")
-                }
-            }
+                }.keyboardShortcut(.return, modifiers: [])
+            }.padding()
             List {
                 ForEach(view_model.list) { task in
-                    TodoTaskHorizView(task: task)
+                    TodoTaskHorizView(task: task, view_model: view_model)
                 }
+                #if os(iOS)
+                .onDelete { indexSet in
+                    view_model.removeTask(indexSet)
+                }
+                #endif
             }
-        }.padding()
+        }
     }
 }
 
 struct TodoTaskHorizView: View {
     let task: Todo.TodoTask
+    let view_model: TodoList
     
     var body: some View {
-        Text(task.title).padding()
+        HStack {
+            Text(task.title).padding()
+            #if os(macOS)
+            Spacer()
+            Button(action: {
+                view_model.removeTask(task)
+            }) {
+                Image(systemName: "minus")
+            }
+            #endif
+        }
     }
 }
 
