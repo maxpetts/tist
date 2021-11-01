@@ -26,7 +26,15 @@ class TodoList: ObservableObject {
 //        print("not implem")
 //    }
 //
-//    mutating func removeTask(_ taskTitle: String) {
-//        print("not implem")
+//    func removeTask(_ taskTitle: String) {
+//        model.removeTask(title: taskTitle)
 //    }
+    
+    func removeTask(_ indexSet: IndexSet) {
+        model.removeTask(indexSet: indexSet)
+    }
+    
+    func removeTask(_ task: Todo.TodoTask) {
+        model.removeTask(task: task)
+    }
 }

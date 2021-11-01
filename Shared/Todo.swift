@@ -23,6 +23,24 @@ struct Todo {
         todo_list.append(TodoTask(title))
     }
     
+    //    mutating func removeTask(title: String) {
+    //        if let index = todo_list.firstIndex(where: {$0.title.contains(title)}) {
+    //            todo_list.remove(at: index)
+    //        }
+    //    }
+    
+    mutating func removeTask(indexSet: IndexSet) {
+        indexSet.forEach({index in
+            todo_list.remove(at: index)
+        })
+    }
+    
+    mutating func removeTask(task: TodoTask) {
+        if let index = todo_list.firstIndex(where: {$0.id == task.id}) {
+            todo_list.remove(at: index)
+        }
+    }
+    
     struct TodoTask: Identifiable {
         let id = UUID()
         var complete: Bool = false
