@@ -9,11 +9,10 @@ import SwiftUI
 
 @main
 struct tistApp: App {
-    let tist = TodoList()
     
     var body: some Scene {
         WindowGroup {
-            ContentView(view_model: tist)
+            ContentView()
         }
     }
 }

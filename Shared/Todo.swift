@@ -17,6 +17,8 @@ struct Todo {
     
     init() {
         todo_list = Array<TodoTask>()
+        todo_list.append(TodoTask("test1"))
+        todo_list.append(TodoTask("test2"))
     }
     
     mutating func createTask(title: String) {
