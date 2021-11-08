@@ -1,4 +1,4 @@
-# Tist T~~odo L~~ist
+# Tist → T ~~odo L~~ ist
 
 A simple todo list app, written in Swift; developed and targetted for MacOS and iOS - _hopefully_.
 
